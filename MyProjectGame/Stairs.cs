@@ -16,7 +16,7 @@ namespace RandomWall
         char[,] stairs_ = new char[20, 10];
 
         int Number = 5;
-        int turn = 0;
+        int score = 0;
         int randomChoice = default;
         int userx = 4;
         int usery = 18;
@@ -55,7 +55,7 @@ namespace RandomWall
             }
             Stairs_list = new List<Stairs>();
 
-            stairs_[0, 5] = '■';
+            //stairs_[1, 6] = '■';
 
 
 
@@ -74,14 +74,14 @@ namespace RandomWall
                 Console.SetCursorPosition(0, 0);
 
 
-                randomChoice = random.Next(0, 10);
+                randomChoice = random.Next(1, 11);
 
 
 
 
                 if (randomChoice <= 5)
                 {
-                    if (Number > 8)
+                    if (Number > 7)
                     {
                         continue;
 
@@ -96,7 +96,7 @@ namespace RandomWall
                 }
                 else if (randomChoice > 5)
                 {
-                    if (Number < 1)
+                    if (Number < 2)
                     {
                         continue;
 
@@ -121,12 +121,12 @@ namespace RandomWall
                         if (stairs_[y, x] == '·')
                         {
 
-                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ForegroundColor = ConsoleColor.Black;
                             Console.Write("{0} ", stairs_[y, x]);
                             Console.ResetColor();
 
                         }
-                        else if (stairs_[y, x] == '★' || stairs_[y, x] == '◀')
+                        else if (stairs_[y, x] == '★')
                         {
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Console.Write("{0} ", stairs_[y, x]);
@@ -192,20 +192,20 @@ namespace RandomWall
             while (true)
             {
 
-
+                Console.WriteLine("현재 스코어 : {0}" , score);
 
                 Console.SetCursorPosition(0, 0);
 
 
 
-                randomChoice = random.Next(0, 10);
+                randomChoice = random.Next(1, 11);
 
 
 
 
                 if (randomChoice <= 5)
                 {
-                    if (Number > 8)
+                    if (Number > 7)
                     {
                         continue;
 
@@ -215,12 +215,13 @@ namespace RandomWall
 
                         stairs_[0, Number] = '■';
                         Number++;
+                        score++;
                     }
 
                 }
                 else if (randomChoice > 5)
                 {
-                    if (Number < 1)
+                    if (Number < 2)
                     {
                         continue;
 
@@ -230,6 +231,8 @@ namespace RandomWall
 
                         stairs_[0, Number] = '■';
                         Number--;
+                        score++;
+
                     }
 
                 }
@@ -246,12 +249,12 @@ namespace RandomWall
                         if (stairs_[y, x] == '·')
                         {
 
-                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ForegroundColor = ConsoleColor.Black;
                             Console.Write("{0} ", stairs_[y, x]);
                             Console.ResetColor();
 
                         }
-                        else if (stairs_[y, x] == '★' || stairs_[y, x] == '◀')
+                        else if (stairs_[y, x] == '★')
                         {
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Console.Write("{0} ", stairs_[y, x]);
@@ -298,7 +301,15 @@ namespace RandomWall
                         {
                             swap(ref stairs_[usery, userx], ref stairs_[usery, userx + 1]);
 
+
                             userx += 1;
+                            if (stairs_[usery, userx + 1] == '·' && stairs_[usery, userx - 1] == '·')
+                            {
+                                Console.WriteLine("잘 못하시나봐요 ^^");
+                                Console.WriteLine("현재 스코어 : {0}", score);
+
+                                return;
+                            }
                             stairs_[usery, userx] = '·';
                             stairs_[usery, userx -1] = '·';
 
@@ -308,8 +319,15 @@ namespace RandomWall
                         else if (change == 1)
                         {
                             swap(ref stairs_[usery, userx], ref stairs_[usery, userx - 1]);
-
                             userx -= 1;
+                            if (stairs_[usery, userx + 1] == '·' && stairs_[usery, userx - 1] == '·')
+                            {
+                                Console.WriteLine("잘 못하시나봐요 ^^");
+                                Console.WriteLine("최종 스코어 : {0}", score);
+
+
+                                return;
+                            }
                             stairs_[usery, userx] = '·';
                             stairs_[usery, userx + 1] = '·';
 
@@ -327,7 +345,16 @@ namespace RandomWall
                         change++;
                         swap(ref stairs_[usery, userx], ref stairs_[usery, userx - 1]);
 
+
                         userx -= 1;
+                        if (stairs_[usery, userx + 1] == '·' && stairs_[usery, userx - 1] == '·')
+                        {
+                            Console.WriteLine("잘 못하시나봐요 ^^");
+                            Console.WriteLine("최종 스코어 : {0}", score);
+
+
+                            return;
+                        }
                         stairs_[usery, userx] = '·';
                         stairs_[usery, userx + 1] = '·';
 
@@ -339,15 +366,20 @@ namespace RandomWall
                         change--;
                         swap(ref stairs_[usery, userx], ref stairs_[usery, userx + 1]);
 
-                        userx += 1;
+
+                            userx += 1;
+                        if (stairs_[usery, userx + 1] == '·' && stairs_[usery, userx - 1] == '·')
+                        {
+                            Console.WriteLine("잘 못하시나봐요 ^^");
+
+                            return;
+                        }
                         stairs_[usery, userx] = '·';
                         stairs_[usery, userx - 1] = '·';
 
                     }
                     randomStairs();
-
                 }
-
 
 
             }

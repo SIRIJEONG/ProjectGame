@@ -15,7 +15,7 @@ namespace MyProjectGame
             {
                 for (int x = 0; x < 49; x++)
                 {
-                    Console.SetCursorPosition(x + 37, y);
+                    Console.SetCursorPosition(x , y);
                     if (x == 0 && y == 0)
                     {
                         Console.Write("┌");

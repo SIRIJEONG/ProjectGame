@@ -15,6 +15,7 @@ namespace MyProjectGame
             //Screen map = new Screen();
             //map.ScreenMap();
 
+
             Stairs step = new Stairs();
             //step.StairsPosition();
             step.InfinityStairs();
