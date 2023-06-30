@@ -8,18 +8,23 @@ namespace MyProjectGame
 {
     public class Gold
     {
-        int gold = default;
+         public int gold = default;
+        
+        //public Gold()
+        //{
+        //    gold = 0;
+        //}
 
-        public Gold()
-        {
-            gold = 0;
-        }
-
-        public void AddmoneyGold(int addGold)
+        public void AddmoneyGold(int addGold )
         {
             gold += addGold;
             Console.WriteLine();
             Console.WriteLine();
+            Console.WriteLine("                      보유골드 : {0}", gold);
+        }
+
+        public void showGold()
+        {
             Console.WriteLine("                      보유골드 : {0}", gold);
         }
 

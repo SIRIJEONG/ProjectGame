@@ -9,13 +9,15 @@ namespace MyProjectGame
 {
     public class Store
     {
-        int gold = 100000;
+        Gold gold2 = default;
 
 
         Random random = new Random();
         List<Store> store_list = default;
         List<string> Invrntory_list = default;
         System.ConsoleKeyInfo key = default;
+
+
 
         int itemNumber1 = 1;
         int itemNumber2 = 2;
@@ -32,6 +34,9 @@ namespace MyProjectGame
         public string name1;
         public int money;
 
+
+
+
         public void name(string itemName, int gold)
         {
             name1 = itemName;
@@ -41,29 +46,36 @@ namespace MyProjectGame
         public void market()
         {
 
-            Store waterbottle = new Store();
+            store_list = new List<Store>();
+
+            if (Invrntory_list == default)
+            {
+                Invrntory_list = new List<string>();
+
+            }
+
+            Store waterbottle = new Store(gold2);
             waterbottle.name("김재현의 물병", 10000);
-            Store glasses = new Store();
+            Store glasses = new Store(gold2);
             glasses.name("박시연의 알없는 안경", 15000);
-            Store macbook = new Store();
+            Store macbook = new Store(gold2);
             macbook.name("배경택의 맥북", 39800);
-            Store pouch = new Store();
-            pouch.name("이미정의 곰돌이 파우치", 100000);
-            Store pin = new Store();
+            Store pouch = new Store(gold2);
+            pouch.name("뭐? 이미정이 곰돌이 파우치라고?", 100000);
+            Store pin = new Store(gold2);
             pin.name("박준오의 머리핀", 8000);
-            Store pants = new Store();
+            Store pants = new Store(gold2);
             pants.name("유준호의 찢어진바지", 80000);
-            Store coffee = new Store();
+            Store coffee = new Store(gold2);
             coffee.name("교수님의 아이스아메리카노", 3000);
-            Store mandarin = new Store();
+            Store mandarin = new Store(gold2);
             mandarin.name("신성창의 제주감귤", 2000);
-            Store IQOS = new Store();
+            Store IQOS = new Store(gold2);
             IQOS.name("이경민의 부숴진 아이코스", 5000);
-            Store lighter = new Store();
+            Store lighter = new Store(gold2);
             lighter.name("박정근의 세상을 멸망시킬 라이터", 4444);
 
 
-            store_list = new List<Store>();
 
             store_list.Add(waterbottle);
             store_list.Add(glasses);
@@ -78,14 +90,20 @@ namespace MyProjectGame
 
 
 
-            Invrntory_list = new List<string>();
 
+        }
+
+        public Store(Gold gold1_)
+
+        {
+            gold2 = gold1_;
         }
 
         public void showStore()
         {
             while (true)
             {
+                gold2.showGold();
 
                 Console.SetCursorPosition(0, 0);
 
@@ -109,13 +127,13 @@ namespace MyProjectGame
 
                 if (userchoice == "1")
                 {
-                    if (gold <= 0)
+                    if (gold2.gold <= 0)
                     {
                         Console.WriteLine("골드가 부족합니다.");
                         continue;
                     }
-                    gold -= store_list[0].money;
-                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[0].name1, gold);
+                    gold2.gold -= store_list[0].money;
+                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[0].name1, gold2.gold);
                     Invrntory_list.Add(store_list[0].name1);
                     continue;
 
@@ -125,13 +143,13 @@ namespace MyProjectGame
 
                 else if (userchoice == "2")
                 {
-                    if (gold <= 0)
+                    if (gold2.gold <= 0)
                     {
                         Console.WriteLine("골드가 부족합니다.");
                         continue;
                     }
-                    gold -= store_list[1].money;
-                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[1].name1, gold);
+                    gold2.gold -= store_list[1].money;
+                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[1].name1, gold2.gold);
                     Invrntory_list.Add(store_list[1].name1);
 
                     continue;
@@ -145,13 +163,13 @@ namespace MyProjectGame
 
                 else if (userchoice == "3")
                 {
-                    if (gold <= 0)
+                    if (gold2.gold <= 0)
                     {
                         Console.WriteLine("골드가 부족합니다.");
                         continue;
                     }
-                    gold -= store_list[2].money;
-                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[2].name1, gold);
+                    gold2.gold -= store_list[2].money;
+                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[2].name1, gold2.gold);
                     Invrntory_list.Add(store_list[2].name1);
 
                     continue;
@@ -163,13 +181,13 @@ namespace MyProjectGame
 
                 else if (userchoice == "4")
                 {
-                    if (gold <= 0)
+                    if (gold2.gold <= 0)
                     {
                         Console.WriteLine("골드가 부족합니다.");
                         continue;
                     }
-                    gold -= store_list[3].money;
-                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[3].name1, gold);
+                    gold2.gold -= store_list[3].money;
+                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[3].name1, gold2.gold);
                     Invrntory_list.Add(store_list[3].name1);
 
                     continue;
@@ -183,13 +201,13 @@ namespace MyProjectGame
 
                 else if (userchoice == "5")
                 {
-                    if (gold <= 0)
+                    if (gold2.gold <= 0)
                     {
                         Console.WriteLine("골드가 부족합니다.");
                         continue;
                     }
-                    gold -= store_list[4].money;
-                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[4].name1, gold);
+                    gold2.gold -= store_list[4].money;
+                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[4].name1, gold2.gold);
                     Invrntory_list.Add(store_list[4].name1);
 
                     continue;
@@ -201,13 +219,13 @@ namespace MyProjectGame
 
                 else if (userchoice == "6")
                 {
-                    if (gold <= 0)
+                    if (gold2.gold <= 0)
                     {
                         Console.WriteLine("골드가 부족합니다.");
                         continue;
                     }
-                    gold -= store_list[5].money;
-                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[5].name1, gold);
+                    gold2.gold -= store_list[5].money;
+                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[5].name1, gold2.gold);
                     Invrntory_list.Add(store_list[5].name1);
 
                     continue;
@@ -221,13 +239,13 @@ namespace MyProjectGame
 
                 else if (userchoice == "7")
                 {
-                    if (gold <= 0)
+                    if (gold2.gold <= 0)
                     {
                         Console.WriteLine("골드가 부족합니다.");
                         continue;
                     }
-                    gold -= store_list[6].money;
-                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[6].name1, gold);
+                    gold2.gold -= store_list[6].money;
+                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[6].name1, gold2.gold);
                     Invrntory_list.Add(store_list[6].name1);
 
                     continue;
@@ -240,13 +258,13 @@ namespace MyProjectGame
 
                 else if (userchoice == "8")
                 {
-                    if (gold <= 0)
+                    if (gold2.gold <= 0)
                     {
                         Console.WriteLine("골드가 부족합니다.");
                         continue;
                     }
-                    gold -= store_list[7].money;
-                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[7].name1, gold);
+                    gold2.gold -= store_list[7].money;
+                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[7].name1, gold2.gold);
                     Invrntory_list.Add(store_list[7].name1);
 
                     continue;
@@ -260,13 +278,13 @@ namespace MyProjectGame
 
                 else if (userchoice == "9")
                 {
-                    if (gold <= 0)
+                    if (gold2.gold <= 0)
                     {
                         Console.WriteLine("골드가 부족합니다.");
                         continue;
                     }
-                    gold -= store_list[8].money;
-                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[8].name1, gold);
+                    gold2.gold -= store_list[8].money;
+                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[8].name1, gold2.gold);
                     Invrntory_list.Add(store_list[8].name1);
 
                     continue;
@@ -278,14 +296,14 @@ namespace MyProjectGame
 
                 else if (userchoice == "10")
                 {
-                    if (gold <= 0)
+                    if (gold2.gold <= 0)
                     {
                         Console.WriteLine("골드가 부족합니다.");
                         continue;
                     }
-                    gold -= store_list[9].money;
+                    gold2.gold -= store_list[9].money;
 
-                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[9].name1, gold);
+                    Console.WriteLine("{0}을 구매했습니다. 남은 금액은 {1}원입니다", store_list[9].name1, gold2.gold);
                     Invrntory_list.Add(store_list[9].name1);
 
                     continue;
@@ -312,10 +330,10 @@ namespace MyProjectGame
                 else if (userchoice == "r" || userchoice == "R")
                 {
                     Console.Clear();
-                    Program program = new Program();
-                    program.start();
+                    break;
 
                 }
+
             }
         }
     }

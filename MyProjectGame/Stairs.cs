@@ -12,7 +12,7 @@ namespace RandomWall
 {
     public class Stairs
     {
-        Gold gold1 = new Gold();
+        Gold gold1 = default;
 
         Random random = new Random();
         List<Stairs> Stairs_list = default;
@@ -30,7 +30,10 @@ namespace RandomWall
         public int x;
         public int y;
 
-
+        public Stairs(Gold gold1_)
+        {
+            gold1 = gold1_;
+        }
 
         public void position(int ypos, int xpos)
         {
@@ -164,13 +167,13 @@ namespace RandomWall
                         }
                         else if (stairs_[y, x] == '■')
                         {
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.Write("{0} ", stairs_[y, x]);
                             Console.ResetColor();
                         }
                         else if (stairs_[y, x] == '▣')
                         {
-                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.Write("{0} ", stairs_[y, x]);
                             Console.ResetColor();
                         }
@@ -196,7 +199,7 @@ namespace RandomWall
                         {
 
 
-                            Stairs StairsList = new Stairs();
+                            Stairs StairsList = new Stairs(gold1);
                             StairsList.position(y, x);
 
                             Stairs_list.Add(StairsList);
@@ -324,13 +327,13 @@ namespace RandomWall
                         }
                         else if (stairs_[y, x] == '■')
                         {
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.Write("{0} ", stairs_[y, x]);
                             Console.ResetColor();
                         }
                         else if (stairs_[y, x] == '▣')
                         {
-                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.Write("{0} ", stairs_[y, x]);
                             Console.ResetColor();
                         }
@@ -386,8 +389,7 @@ namespace RandomWall
                                 if ('r' == key.KeyChar || 'R' == key.KeyChar)
                                 {
                                     Console.Clear();
-                                    Program program = new Program();
-                                program.start();
+                                    break;
 
                                 }
 
@@ -420,8 +422,7 @@ namespace RandomWall
                                 if ('r' == key.KeyChar || 'R' == key.KeyChar)
                                 {
                                     Console.Clear();
-                                    Program program = new Program();
-                                    program.start();
+                                    break;
 
                                 }
 
@@ -462,8 +463,7 @@ namespace RandomWall
                             if ('r' == key.KeyChar || 'R' == key.KeyChar)
                             {
                                 Console.Clear();
-                                Program program = new Program();
-                                program.start();
+                                break;
 
                             }
                         }
@@ -493,11 +493,12 @@ namespace RandomWall
                             Thread.Sleep(1000);
                             key = Console.ReadKey(true);
 
+
+
                             if ('r' == key.KeyChar || 'R' == key.KeyChar)
                             {
                                 Console.Clear();
-                                Program program = new Program();
-                                program.start();
+                                break;
 
                             }
 
@@ -531,7 +532,7 @@ namespace RandomWall
                     {
 
 
-                        Stairs StairsList = new Stairs();
+                        Stairs StairsList = new Stairs(gold1);
                         StairsList.position(y, x);
 
                         Stairs_list.Add(StairsList);
